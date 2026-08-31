@@ -1,0 +1,1 @@
+Zwykle proste projekty ktore sluza mi za nauke :D
