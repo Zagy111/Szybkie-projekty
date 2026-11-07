@@ -23,7 +23,7 @@ jezeli masz zadanie zeby wypisac dla kazdego znaku ascii:
 int main() {
     std::string znki;
     std::cout << "podaj znaki: ";
-    cin >> znki;
+    std::cin >> znki;
     for (int i = 0; i < znki.length(); i++) {
     std::cout << znki[i] << " " << (int)znki[i] << std::endl;
 
