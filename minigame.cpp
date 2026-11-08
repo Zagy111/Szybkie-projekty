@@ -2,9 +2,12 @@
 
 void game() {
 
-    const int width = 20; //tu dlugosc mapy
-    const int win = 19;
+    const int width = 35; //tu dlugosc mapy
+    const int win = 34;
     const int obstacle = 5;
+    const int obstacle1 = 15;
+    const int coin = 8;
+    bool coinCollected = false;
     int position = 0; //pozycjaa gracza
     char key;
 
@@ -23,14 +26,20 @@ void game() {
             else if (i == obstacle) {
                 std::cout << '^';
             }
+            else if (i == obstacle1) {
+                std::cout << ' ';
+            }
+            else if (i == coin && !coinCollected) {
+                std::cout << '$';
+            }
             else {
                 std::cout << '.';
             }
         }
 
 
-            std::cout << "\n###################\n" << position;
-            std::cout << "\nmoving -> a/d  jumping -> w  quit -> q\nYour move: ";
+            std::cout << "\n" << position;
+            std::cout << "\nmoving -> a/d  jumping -> w  collect coin -> e  quit -> q\nCoin collected (" << coinCollected << "/1)\nYour move: ";
 
 
             std::cin >> key;
@@ -45,14 +54,29 @@ void game() {
                 break;
             }
             if (position == win) {
-                std::cout << "\nYOU WON!\n";
+                std::cout << "\nYOU WON!\nCoin collected (" << coinCollected << "/1)\n";
                 break;
             }
-            if (key == 'w' && position + 1 ==obstacle && position + 2 < width) {
+            if ((key == 'w' && position + 1 ==obstacle && position + 2 < width) || (key == 'w' && position + 1 ==obstacle1 && position + 2 < width)) {
                 position += 2;
             }
-            else if (key == 'w' && position - 1 ==obstacle && position - 2 >=0) {
+            else if ((key == 'w' && position - 1 ==obstacle && position - 2 >=0) || (key == 'w' && position - 1 ==obstacle1 && position - 2 >=0)) {
                 position -= 2;
+            }
+            if (key == 'd' && position == obstacle1) {
+                position++;
+                std::cout << "\nyou fell in hole, try again!\n";
+                break;
+                
+            }
+            if (key == 'a' && position == obstacle1) {
+                position--;
+                std::cout << "\nyou fell in hole, try again!\n";
+                break;
+                
+            }
+            if (position == coin && key == 'e' && !coinCollected) {
+                coinCollected = true;
             }
 
 }
