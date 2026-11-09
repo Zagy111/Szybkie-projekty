@@ -7,6 +7,7 @@ void game() {
     const int obstacle = 5;
     const int obstacle1 = 15;
     const int coin = 8;
+    int enemy = 20;
     bool coinCollected = false;
     int position = 0; //pozycjaa gracza
     char key;
@@ -31,6 +32,9 @@ void game() {
             }
             else if (i == coin && !coinCollected) {
                 std::cout << '$';
+            }
+            else if (i == enemy) {
+                std::cout << '@';
             }
             else {
                 std::cout << '.';
@@ -77,6 +81,10 @@ void game() {
             }
             if (position == coin && key == 'e' && !coinCollected) {
                 coinCollected = true;
+            }
+            if ((enemy == position + 1) || (enemy == position - 1)) {
+                std::cout << "\nmonster killed you, try again\n";
+                break;
             }
 
 }
