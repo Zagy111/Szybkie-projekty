@@ -47,7 +47,7 @@ void game() {
 
 
             std::cin >> key;
-
+            
             if (key == 'd' && position < width - 1 && position +1 != obstacle) {
                 position++;
             }
@@ -82,10 +82,19 @@ void game() {
             if (position == coin && key == 'e' && !coinCollected) {
                 coinCollected = true;
             }
-            if ((enemy == position + 1) || (enemy == position - 1)) {
+            if ((enemy == position) || (enemy == position)) {
                 std::cout << "\nmonster killed you, try again\n";
                 break;
             }
+            
+            if (enemy <= 27){
+               enemy++;
+            }
+            else {
+                enemy--;
+            }
+            
+            
 
 }
 
