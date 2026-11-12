@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 
 void game() {
 
@@ -8,6 +9,7 @@ void game() {
     const int obstacle1 = 15;
     const int coin = 8;
     int enemy = 20;
+    bool enemyAlive = true;
     bool coinCollected = false;
     int position = 0; //pozycjaa gracza
     char key;
@@ -33,7 +35,7 @@ void game() {
             else if (i == coin && !coinCollected) {
                 std::cout << '$';
             }
-            else if (i == enemy) {
+            else if (i == enemy && enemyAlive) {
                 std::cout << '@';
             }
             else {
@@ -82,18 +84,24 @@ void game() {
             if (position == coin && key == 'e' && !coinCollected) {
                 coinCollected = true;
             }
-            if ((enemy == position) || (enemy == position)) {
+            if ((enemy == position) || (enemy == position) && enemyAlive) {
                 std::cout << "\nmonster killed you, try again\n";
                 break;
             }
-            
-            if (enemy <= 27){
-               enemy++;
+
+            if (key == 'f' && (enemy == position +1) || (enemy == position) || (enemy == position -1) && enemyAlive){
+                enemyAlive = false;
+                std::cout << "\nmonster killed!\n";
             }
-            else {
-                enemy--;
+            if (enemyAlive && enemy -1 != position){
+                
+                std::random_device rd;
+                std::mt19937 gen(rd());
+                std::uniform_int_distribution<int> moveE(-1,1);
+                enemy += moveE(gen);
+                
             }
-            
+
             
 
 }
