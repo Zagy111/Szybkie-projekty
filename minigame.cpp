@@ -45,7 +45,7 @@ void game() {
 
 
             std::cout << "\n" << position;
-            std::cout << "\nmoving -> a/d  jumping -> w  collect coin -> e  quit -> q\nCoin collected (" << coinCollected << "/1)\nYour move: ";
+            std::cout << "\nmoving -> a/d  jumping -> w  attack -> f  collect coin -> e  quit -> q\nCoin collected (" << coinCollected << "/1)\nYour move: ";
 
 
             std::cin >> key;
@@ -92,6 +92,7 @@ void game() {
             if (key == 'f' && (enemy == position +1) || (enemy == position) || (enemy == position -1) && enemyAlive){
                 enemyAlive = false;
                 std::cout << "\nmonster killed!\n";
+                enemy += 50;
             }
             if (enemyAlive && enemy -1 != position){
                 
