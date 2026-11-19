@@ -20,6 +20,15 @@ void setLevel(int lvl, int &width, int &win, int &obstacle, int &obstacle1, int 
         coin = 20;
         enemy = 30;
     }
+    else if (lvl == 3) {
+        width = 35;
+        win = 34;
+        obstacle = 24;
+        obstacle1 = 26;
+        obstacle2 = 28;
+        enemy = 12;
+        coin = 18;
+    }
     enemyAlive = true;
     coinCollected = false;
 }
@@ -80,7 +89,7 @@ void game() {
         }
         if (position == win) {
             level++;
-            if (level > 2) {
+            if (level > 3) {
                 std::cout << "\nYOU WON!\nCoin collected (" << coinCollected << "/1)\n";
                 break;
             }
